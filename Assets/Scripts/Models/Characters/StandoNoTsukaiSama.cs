@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using Interfaces.Models;
 using UnityEngine;
 
-public class StandoNoTsukaiSama : MonoBehaviour
+public class StandoNoTsukaiSama : MonoBehaviour, IStandUser
 {
     protected IStando StandBehavior;
-    public bool StandoTsukaiMonoGaAru;
+    public bool StandoWoTsukaiMonoGaAru;
     protected virtual void Start()
     {
         GetStando();
-        StandoTsukai();
     }
 
     protected void GetStando(){
             StandBehavior = GetComponent<IStando>();
-            StandoTsukaiMonoGaAru = (StandBehavior is IStando) ? true: false;
+            StandoWoTsukaiMonoGaAru = (StandBehavior is IStando) ? true: false;
     }
 
-    public void StandoTsukai(){
+    public void Use()
+    {
         if(StandBehavior is IStando)
             StandBehavior.Tsukai();
     }
